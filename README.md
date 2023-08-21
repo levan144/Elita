@@ -10,8 +10,6 @@ A brief description of what this project does and who it's for
 
 # Installation
 
-Install my-project with npm
-
 ### Introduction
 Laravel Mix provides a clean, fluent API for defining basic webpack build steps for your Laravel application. Mix supports several common CSS and JavaScript pre-processors.
 
