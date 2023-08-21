@@ -77,6 +77,7 @@ php artisan optimize
 
 
 ## Create New Page
+#### How to add a New Page:
 
 - Create New View with blade.php extenstion.
 - Create Controller for different methods related to page. (Optional. You can use default controller also.)
@@ -85,22 +86,65 @@ php artisan optimize
 - Add page link to resources/views/layouts/header.blade.php for Horizontal menu
 - Add page name to resources/lang/en{all language folder}/translation.php file to display in multi language.
 
-
-Go to the project directory
+#### Steps to add a new page :
+- Step 1: Create a file with the test.blade.php under the resources/views directory. Let's create a testPage for an example with filename test.blade.php and placing the below code in that file.
+```bash
+@extends('layouts.master')
+@section('title') @lang('translation.Test') @endsection
+@section('content')
+@component('components.breadcrumb')
+@slot('li_1') Vuesy @endslot
+@slot('title') Test Page @endslot
+@endcomponent
+<div>
+.........
+</div>
+@endsection
+```
+- Step 2: To add new controller, use below command :
 
 ```bash
-  cd my-project
+php artisan make:controller {ControllerName} {-r}
 ```
-
-Install dependencies
-
+To change breadcrumbs :
 ```bash
-  npm install
+@component('components.breadcrumb')
+@slot('li_1') Vuesy @endslot
+@slot('title') Test Page @endslot
+@endcomponent
 ```
-
-Start the server
-
+- Step 3: After creating file and controller you need to declare its route where it can be served on the browser, suppose you want created page to be serve on the route http://localhost:8000/test . To access this page define its routes in the resources/web.php file.
 ```bash
-  npm run start
+Route::get('/test', function () { return view('test'); });
 ```
+- Step 4: After defining the route, add page link to sidebar at `resources/views/layouts/sidebar.blade.php` file. or add also in `resources/views/layouts/header.blade.php`
+  
+  option 1: To add item in menu.
+
+  `<a href="test" class="dropdown-item" key="t-test">@lang('translation.Test')</a>`
+
+- Step 5: Add page name to `resources/lang/en{all language folder}/translation.php` file to display in multi language.
+`"Test" => "Test"`
+### Custom Css for User
+
+ We have provided custom scss files for user to override themes styles and variable.
+- We have provided app.scss for user override.
+- Also, we have provided theme-dark.scss for Dak version specific style.
+- You can override bootstrap variable in _variable.scss file.
+- We have also provided a app.js file. You can write your custom script here and it won't be overridden in our future release.
+
+### Multi Language Settings
+Lets add french language.
+
+- Create new file translation.php in the fr folder in the resources/lang folder and add the below code.
+```bash <?php
+    // translation.php
+    return [
+            'Test' => 'Test'
+    ];
+
+```
+- You need to add the new language option in the topbar `resources/views/layouts/header.blade.php`. Make sure to add it flag image and option in the dropdown.
+
+After completing these above steps you need to run the command npm run dev command in the project directory. After running this process you need to run the command php artisan serve . It will serve your app on the localhost.
 
