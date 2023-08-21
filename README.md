@@ -1,40 +1,29 @@
-# Laravel Project Name 🚀
 
-> Brief description of your project. Maybe one or two lines explaining its main purpose.
+## Create New Page
 
-![Laravel Logo](link-to-logo-if-any)
+- Create New View with blade.php extenstion.
+- Create Controller for different methods related to page. (Optional. You can use default controller also.)
+- Set Path in routes/web.php file to serve the page on the browser.
+- Add page link to resources/views/layouts/sidebar.blade.php for vertical menu
+- Add page link to resources/views/layouts/header.blade.php for Horizontal menu
+- Add page name to resources/lang/en{all language folder}/translation.php file to display in multi language.
 
-## 📖 Table of Contents
 
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Database](#database)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [Changelog](#changelog)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
+Go to the project directory
 
-## ⭐ Features
+```bash
+  cd my-project
+```
 
-- Feature 1: Description
-- Feature 2: Description
-- ...
+Install dependencies
 
-## 📋 Prerequisites
+```bash
+  npm install
+```
 
-- PHP >= 8.0
-- Composer
-- ... (Any other requirements)
+Start the server
 
-## 🛠 Installation
+```bash
+  npm run start
+```
 
-1. Clone the repository:
-   ```bash
-   git clone your-repo-link
