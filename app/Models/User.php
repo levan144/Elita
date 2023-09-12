@@ -20,9 +20,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
-        'role',
+        'department_id',
+        'phone',
+        'avatar',
+        'sid'
     ];
 
     /**
@@ -62,6 +66,10 @@ class User extends Authenticatable
     public function hasProjectRole(Project $project, $roleName)
     {
         return $this->projectRoles($project)->where('name', $roleName)->exists();
+    }
+    
+    public function department() {
+        $this->belongsTo(Department::class, 'department_id');
     }
    
 }

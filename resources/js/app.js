@@ -6,6 +6,16 @@ Website: https://Themesdesign.in/
 Contact: themesdesign.in@gmail.com
 File: Main Js File
 */
+// window.Pusher = require('pusher-js');
+
+// let EchoClass = require('laravel-echo');
+
+// window.Echo = new EchoClass({
+//     broadcaster: 'pusher',
+//     key: 'local',
+//     cluster: 'mt1',
+//     forceTLS: false
+// });
 
 (function () {
 
@@ -312,6 +322,8 @@ File: Main Js File
 
     function fadeOutEffect(elem, delay) {
         var fadeTarget = document.getElementById(elem);
+        var allTarget = document.querySelectorAll('.box');
+        
         fadeTarget.style.display = 'block';
         var fadeEffect = setInterval(function () {
             if (!fadeTarget.style.opacity) {
@@ -377,9 +389,9 @@ File: Main Js File
 
     function layoutSetting() {
         var body = document.body;
-        document.getElementById('right-bar-toggle').addEventListener('click', function (e) {
-            body.classList.toggle('right-bar-enabled');
-        });
+        // document.getElementById('right-bar-toggle').addEventListener('click', function (e) {
+        //     body.classList.toggle('right-bar-enabled');
+        // });
 
         body.addEventListener('click', function (e) {
             if(e.target.parentElement.classList.contains("right-bar-toggle-close")) {
@@ -528,7 +540,105 @@ File: Main Js File
         });
     }
 
+    // Notification Listener function
+    function listenForNotifications() {
+
+        let userId = document.head.querySelector('meta[name="user-id"]').content;
+        window.Echo = new window.Echo({
+            broadcaster: 'pusher',
+            key: 'local',
+            cluster: 'mt1',
+            forceTLS: true
+        });
+        
+        window.Echo.private(`App.Models.User.${userId}`)
+            .notification((notification) => {
+                alert(notification.message);
+            });
+    }
+
+  
+
+    function dragHeaderBoxes(){
+        let draggedItem = null;
+        document.querySelectorAll('.dragbox').forEach(function(box) {
+            if (box.getAttribute('draggable') !== "true") return; // Skip boxes without the attribute
+
+            var boxes = document.querySelectorAll('.dragbox');
+                box.addEventListener('dragstart', function(e) {
+                    draggedItem = this;
+                    setTimeout(function() {
+                        draggedItem.style.opacity = 0.5;
+                        // Loop through each .dragbox and set the background
+                        document.querySelectorAll('.dragbox').forEach(function(innerBox) {
+                            innerBox.style.background = '#3f1e59';
+                            box.style.background = 'none';
+                        });
+                    
+                    }, 0);
+                });
+    
+            box.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                box.style.background = 'none';
+    
+            });
+    
+            box.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+            });
+    
+            box.addEventListener('dragleave', function(e) {
+                document.querySelectorAll('.dragbox').forEach(function(innerBox) {
+                        innerBox.style.background = '#3f1e59';
+                        box.style.background = 'none';
+                    });
+            });
+    
+            box.addEventListener('dragend', function(e) {
+                setTimeout(function() {
+                    draggedItem.style.opacity = 1;
+                    document.querySelectorAll('.dragbox').forEach(function(innerBox) {
+                        innerBox.style.background = 'none';
+                    });
+                }, 0);
+            });
+    
+            box.addEventListener('drop', function(e) {
+                e.preventDefault();
+                console.log(this.hasAttribute("draggable", "true"));
+                console.log(this + ' ss');
+
+                if (this !== draggedItem ) {
+                    console.log(this);
+                    // Capture next sibling and parent to help with position swapping
+                    let draggedNextSibling = draggedItem.nextElementSibling;
+                    let dropTargetNextSibling = this.nextElementSibling;
+                    let parentOfDragged = draggedItem.parentNode;
+                    let parentOfTarget = this.parentNode;
+    
+                    // Handle the swapping by checking siblings and parents
+                    if (!draggedNextSibling) {
+                        parentOfDragged.appendChild(this);
+                    } else {
+                        parentOfDragged.insertBefore(this, draggedNextSibling);
+                    }
+    
+                    if (!dropTargetNextSibling) {
+                        parentOfTarget.appendChild(draggedItem);
+                    } else {
+                        parentOfTarget.insertBefore(draggedItem, dropTargetNextSibling);
+                    }
+                }
+            });
+        });
+
+        
+    }
+
     function init() {
+        
+
         initPreloader();
         initSettings();
         initMetisMenu();
@@ -544,6 +654,8 @@ File: Main Js File
         initMenuItemScroll();
         updateHorizontlMenu();
         initCheckAll();
+        listenForNotifications();
+        dragHeaderBoxes();
     }
 
     init();

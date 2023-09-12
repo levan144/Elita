@@ -254,7 +254,17 @@ body[data-layout="horizontal"] {
     background-color: rgba($white,0.1) !important;
     margin-bottom: calc(#{$grid-gutter-width} + 16px);
 }
+.dash-header-box .col.dragbox:hover {
+    cursor: pointer;
+}
 
+.dash-header-box .col.dragbox:active {
+    cursor: grabbing;
+}
+
+.dash-header-box .col.dragbox[draggable=true] {
+    border:1px dotted white!important;
+}
 .dash-content{
     background: $header-dark-bg;
     border-top: 1px solid rgba(255,255,255,.1);

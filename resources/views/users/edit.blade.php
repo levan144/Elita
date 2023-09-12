@@ -70,7 +70,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">{{__('global.submit')}}</button>
     </div>
 </form><!-- end form -->
 @endsection

@@ -1,12 +1,13 @@
 @extends('layouts.master')
 @section('title')
+{{__('header.page_title')}}
 @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Dashboard @endslot
-            @slot('title') Welcome ! @endslot
+            @slot('li_1') {{__('header.navigation.dashboard')}} @endslot
+            @slot('title') {{__('header.welcome')}} @endslot
         @endcomponent
     @endsection
 <div class="row">

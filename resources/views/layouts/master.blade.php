@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="user-id" content="{{ Auth::id() }}">
 
-    <title> @yield('title')| Vuesy - Admin & Dashboard Template</title>
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+    <title> @yield('title')| Website</title>
+    <meta content="Management system" name="description" />
+    <meta content="Levan J" name="author" />
         
     <!-- Favicons -->
     <link href="{{ URL::asset('assets/images/favicon.ico')}}" rel="icon">
@@ -48,6 +49,40 @@
     @include('layouts.right-sidebar')
 
     @include('layouts.vendor-script')
+   <script>
+      function toggleDraggable() {
+        const elements = document.querySelectorAll('.dragbox');
+        const button = document.getElementById('toggleBtn');
+        const currentDraggableState = elements[0].getAttribute('draggable');
+
+        if (currentDraggableState === 'true') {
+            elements.forEach(el => el.setAttribute('draggable', 'false'));
+        } else {
+            elements.forEach(el => el.setAttribute('draggable', 'true'));
+        }
+
+    }
+
+    // Notification Listener function
+    function listenForNotifications() {
+
+window.Pusher = require('pusher-js');
+window.Echo = require('laravel-echo');
+
+let userId = document.head.querySelector('meta[name="user-id"]').content;
+window.Echo = new window.Echo({
+    broadcaster: 'pusher',
+    key: 'local',
+    cluster: 'mt1',
+    forceTLS: true
+});
+
+window.Echo.private(`App.Models.User.${userId}`)
+    .notification((notification) => {
+        alert(notification.message);
+    });
+}
+   </script>
 </body>
 
 </html>

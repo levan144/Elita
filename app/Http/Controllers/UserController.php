@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('roles')->get();
+        $user = User::with(['department','roles'])->get();
         
         $role = Role::all()->pluck('name');
         return view('users.index',compact('user','role'));
@@ -45,18 +45,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
+            'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'phone' => 'required',
+            'sid' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'department_id' => 'required',
         ]);
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('role'));
     
         return redirect()->route('users.index')->with('success','User created successfully');
     }
@@ -132,6 +137,6 @@ class UserController extends Controller
     public function destroy($id, Request $request)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User deleted successfully');
+        return redirect()->route('users.index')->with('success', __('users.response.created'));
     }
 }

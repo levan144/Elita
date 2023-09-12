@@ -80,7 +80,7 @@
                     <form class="p-2">
                         <div class="search-box">
                             <div class="position-relative">
-                                <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
+                                <input type="text" class="form-control rounded bg-light border-0" placeholder="{{__('global.search_placeholder')}}">
                                 <i class="bx bx-search search-icon"></i>
                             </div>
                         </div>
@@ -90,32 +90,32 @@
 
             <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                    <img id="header-lang-img" src="/assets/images/flags/us.jpg" alt="Header Language" height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
-                        <img src="assets/images/flags/us.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
+                        <img src="/assets/images/flags/us.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
                     </a>
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
+                    <a href="/javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                        <img src="/assets/images/flags/spain.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
+                    <a href="/javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                        <img src="/assets/images/flags/germany.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="/javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                        <img src="/assets/images/flags/italy.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
+                        <img src="/assets/images/flags/russia.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
                     </a>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-sm" alt="user-pic">
+                                    <img src="/assets/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1">Justin Verduzco</h6>
@@ -193,7 +193,7 @@
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/users/avatar-4.jpg" class="me-3 rounded-circle avatar-sm" alt="user-pic">
+                                    <img src="/assets/images/users/avatar-4.jpg" class="me-3 rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1">Salena Layfield</h6>
@@ -214,32 +214,29 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
+                <a><button type="button" class="btn header-item noti-icon right-bar-toggle">
                     <i class="bx bx-cog icon-sm"></i>
-                </button>
+                </button></a>
             </div>
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-3.jpg" alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-3.jpg" alt="Header Avatar">
                     <span class="ms-2 d-none d-xl-inline-block user-item-desc">
                         <span class="user-name">{{ Auth::user()->name }}<i class="mdi mdi-chevron-down"></i></span>
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
-                    <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                    <a class="dropdown-item" href="users"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Users</span></a>
-                    <a class="dropdown-item" href="apps-chat"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
+                    <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">{{__('header.profile')}}</span></a>
+                    <a class="dropdown-item" href="apps-chat"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">{{__('header.messages')}}</span></a>
                     <a class="dropdown-item" href="apps-kanban-board"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
-                    <a class="dropdown-item" href="pages-faqs"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                    <a class="dropdown-item" href="pages-faqs"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">{{__('header.help')}}</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
+                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">{{__('header.settings')}}</span></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                                         @csrf
-                    <button type="submit" class="dropdown-item" href="auth-signout-cover"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></button>
+                    <button type="submit" class="dropdown-item" href="auth-signout-cover"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">{{__('header.logout')}}</span></button>
                                     </form>
                     
                 </div>
@@ -256,49 +253,57 @@
 
             {{-- @extends('components.breadcrumb') --}}
             <!-- end page title -->
+            <button type="button" class="btn btn-link text-end text-secondary w-100 p-0 mb-2" id="toggleDraggableBtn"  onclick="toggleDraggable()"><i class="bx bx-edit icon"></i> {{__('header.button.edit')}}</button>
 
             <!-- start dash info -->
             <div class="row">
+
                 <div class="col-xl-12">
+
                     <div class="card dash-header-box shadow-none border-0">
+
                         <div class="card-body p-0">
-                            <div class="row row-cols-xxl-4 row-cols-md-2 row-cols-1 g-0">
-                                <div class="col">
+
+                            <div class="row row-cols-xxl-4 row-cols-md-2 row-cols-1 g-0" >
+                                <div class="col dragbox" draggable="false" data-id="1">
                                     <div class="mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">{{ __('header.info.project') }}</p>
+                                        <p class="text-white-50 mb-2 text-truncate" style="user-select: none;">{{ __('header.info.project') }}</p>
                                         <h3 class="text-white mb-0">197</h3>
                                     </div>
                                 </div><!-- end col -->
 
-                                <div class="col">
+                                <div class="col dragbox" draggable="false" data-id="2">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">{{ __('header.info.unfinished_plan') }}</p>
                                         <h3 class="text-white mb-0">$489.4k</h3>
                                     </div>
                                 </div><!-- end col -->
 
-                                <div class="col">
+                                <div class="col dragbox" draggable="false" data-id="3">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
                                         <h3 class="text-white mb-0">32.89%</h3>
                                     </div>
                                 </div><!-- end col -->
 
-                                <div class="col">
-                                    <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                <div class="col dragbox" draggable="false" data-id="4">
+                                    <div class="mt-3 mt-md-0 py-3 px-4 mx-2" >
                                         <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
                                         <h3 class="text-white mb-0">75.35%</h3>
                                     </div>
                                 </div><!-- end col -->
 
-                              
 
-                            </div><!-- end row -->
+
+                            </div><!-- end row --> 
                         </div><!-- end card body -->
                     </div><!-- end card -->
                 </div><!-- end col -->
             </div>
             <!-- end dash info -->
+
+
+           
         </div>
     </div>
 

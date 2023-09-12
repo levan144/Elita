@@ -7,6 +7,7 @@ use App\Http\Controllers\VuesyController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,20 +35,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     //Projects
-    Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');   
-    Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');   
+    // Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');   
+    // Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');   
+    Route::resource('projects', ProjectController::class);
+    Route::resource('users', UserController::class);
 
     //Projects
     Route::get('reports', [UserController::class, 'index'])->name('reports.index');   
 
-    //Projects
-    Route::get('users', [UserController::class, 'index'])->name('users.index');   
-    Route::get('users/create', [UserController::class, 'create'])->name('users.create');   
-
-    //Projects
+    //Announcements
     Route::get('announcements', [UserController::class, 'index'])->name('announcements.index');   
 
-    
+    //Notification
+    Route::get('/send-notification', [NotificationController::class, 'send'])->name('send.notification');
+
 
    
 

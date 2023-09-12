@@ -1,5 +1,5 @@
 @extends('layouts.master-without-nav')
-@section('title')Sign In @endsection
+@section('title') {{__('auth.login.title')}} @endsection
 @section('content')
 
 <div class="auth-bg-basic d-flex align-items-center min-vh-100">
@@ -12,10 +12,9 @@
                         <div class="pb-3">
                             <a href="index">
                                 <span class="logo-lg">
-                                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="{{URL::asset('assets/images/elitaburji-logo.png')}}" alt="logo" height="24">
                                 </span>
                             </a>
-                            <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience &amp; Interface Design Strategy Saas Solution</p>
                         </div>
                     </div>
                 </div>
@@ -27,15 +26,15 @@
                         <div class="card-body">
                             <div class="py-3">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Welcome Back !</h5>
-                                    <p class="text-muted mt-2">Sign in to continue to Vuesy.</p>
+                                    <h5 class="mb-0">{{__('auth.login.head')}}</h5>
+                                    <p class="text-muted mt-2">{{__('auth.login.subhead')}}</p>
                                 </div>
                                 <form method="POST" action="{{ route('login') }}" class="mt-4 pt-2">
                                     @csrf
 
                                     <div class="form-floating form-floating-custom mb-3">
                                         <input type="email" id="email" placeholder="Enter User Name" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                        <label for="input-username">{{ __('Email Address') }}</label>
+                                        <label for="input-username">{{ __('auth.login.email') }}</label>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -52,7 +51,7 @@
                                         <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
                                             <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
                                         </button>
-                                        <label for="password-input">{{ __('Password') }}</label>
+                                        <label for="password-input">{{ __('auth.login.password') }}</label>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -67,19 +66,19 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <div class="float-end">
                                             @if (Route::has('password.request'))
-                                            <a href="#" class="text-muted text-decoration-underline font-size-14">{{ __('Forgot Your Password?') }}</a>
+                                            <a href="#" class="text-muted text-decoration-underline font-size-14">{{ __('auth.login.forgot') }}</a>
                                             @endif
                                         </div>
                                         <label class="form-check-label font-size-14" for="remember-check">
-                                            {{ __('Remember Me') }}
+                                            {{ __('auth.login.remember_me') }}
                                         </label>
                                     </div>
 
                                     <div class="mt-3">
-                                        <button class="btn btn-primary w-100" type="submit">{{ __('Login') }}</button>
+                                        <button class="btn btn-primary w-100" type="submit">{{ __('auth.login.submit') }}</button>
                                     </div>
 
-                                    <div class="mt-4 text-center">
+                                    <!-- <div class="mt-4 text-center">
                                         <div class="signin-other-title">
                                             <h5 class="font-size-15 mb-4 text-muted fw-medium">- Or you can join with -</h5>
                                         </div>
@@ -95,11 +94,11 @@
                                                 <i class="bx bxl-google font-size-16 align-middle"></i>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="mt-4 pt-3 text-center">
+                                    <!-- <div class="mt-4 pt-3 text-center">
                                         <p class="text-muted mb-0">Don't have an account ? <a href="{{ route('register') }}" class="fw-semibold text-decoration-underline"> Signup Now </a> </p>
-                                    </div>
+                                    </div> -->
 
                                 </form><!-- end form -->
                             </div>
@@ -114,7 +113,8 @@
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                            </script> 
+                            <!-- Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p> -->
                     </div>
                 </div>
             </div> <!-- end row -->

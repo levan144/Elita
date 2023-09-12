@@ -29,7 +29,7 @@
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">{{__('users.name')}}</th>
+            <th scope="col">{{__('users.fullname')}}</th>
             <th scope="col">{{__('users.email')}}</th>
             <th scope="col">{{__('users.department')}}</th>
             <th scope="col">{{__('users.role')}}</th>
@@ -46,10 +46,11 @@
             <th scope="row">{{$id++}}</th>
             <td>{{$data->name}}</td>
             <td>{{$data->email}}</td>
-            <td></td>
+            <td>{{$data->department}}</td>
             <td>
-                
-               {{$data->role->name ?? '-'}}
+            @foreach($data->roles as $role)
+                {{ $role->name }}
+            @endforeach
         
             </td>
             <td></td>

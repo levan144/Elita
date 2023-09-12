@@ -14,7 +14,7 @@
         @endcomponent
     @endsection
 
-<form method="POST" action="#" class="mt-4 pt-2">
+<form method="POST" action="{{route('users.store')}}" class="mt-4 pt-2">
     @csrf
     <div class="form-floating form-floating-custom mb-3">
         <input type="text" id="input-fullname" placeholder="Enter User Name" class="form-control @error('name') is-invalid @enderror" name="name"  required autocomplete="name" autofocus>
@@ -117,10 +117,10 @@
     <div class="mb-3">
         <label for="role">{{ __('users.department') }}</label>
 
-        <select class="form-control" name="role" id="role">
+        <select class="form-control" name="department_id" id="department">
         <option disabled>{{__('global.select')}} {{__('users.department')}}</option>
         @foreach($departments as $department)
-            <option>{{$department->title}}</option>
+            <option value="{{$department->id}}">{{$department->title}}</option>
         @endforeach
         </select>
     </div>

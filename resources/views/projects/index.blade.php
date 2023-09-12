@@ -72,62 +72,63 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="grid-all" role="tabpanel">
                         <div class="row">
-                            <div class="col-xl-3 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body pb-3">
-                                        <div class="d-flex align-items-start mb-3">
-                                            <div class="flex-grow-1">
-                                                <div class="avatar">
-                                                    <img src="{{URL::asset('assets/images/companies/img-1.png')}}" alt="" class="avatar">
-                                                </div>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <div class="dropdown">
-                                                    <a class="text-body dropdown-toggle font-size-16" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="icon-xs" data-feather="more-horizontal"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="#">{{__('projects.actions.view')}}</a></li>
-                                                        <li><a class="dropdown-item" href="#">{{__('projects.actions.edit')}}</a></li>
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="#">{{__('projects.actions.delete')}}</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2">
-                                            <h5 class="font-size-15 mb-1 text-truncate"><a href="projects-overview" class="text-dark">Dashboard UI</a></h5>
-                                            <p class="text-muted mb-4 text-truncate">Duis arcu suscipit eget</p>
-                                        </div>
-
-                                        <div class="progress mt-1" style="height: 6px;">
-                                            <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="52">
-                                            </div>
-                                        </div>
-
-                                        <div class="pt-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <span class="badge badge-soft-danger font-size-12"><i class="mdi mdi-clock-outline font-size-14 me-1 align-middle"></i> {{ __('projects.days_left', ['count' => 2]) }}</span>
-                                                <div class="avatar-group align-items-center">
-                                                    <div class="avatar-group-item">
-                                                        <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliza Hardin">
-                                                            <img src="{{URL::asset('assets/images/users/avatar-4.jpg')}}" alt="" class="rounded-circle avatar-sm">
-                                                        </a>
+                            @foreach($projects as $project)
+                                <div class="col-xl-3 col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body pb-3">
+                                            <div class="d-flex align-items-start mb-3">
+                                                <div class="flex-grow-1">
+                                                    <div class="avatar">
+                                                        <img src="{{URL::asset('assets/images/companies/img-1.png')}}" alt="" class="avatar">
                                                     </div>
-                                                    <div class="avatar-group-item">
-                                                        <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Ronald Hatfield">
-                                                            <img src="{{URL::asset('assets/images/users/avatar-5.jpg')}}" alt="" class="rounded-circle avatar-sm">
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div class="dropdown">
+                                                        <a class="text-body dropdown-toggle font-size-16" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                            <i class="icon-xs" data-feather="more-horizontal"></i>
                                                         </a>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li><a class="dropdown-item" href="#">{{__('projects.actions.view')}}</a></li>
+                                                            <li><a class="dropdown-item" href="#">{{__('projects.actions.edit')}}</a></li>
+                                                            <li>
+                                                                <hr class="dropdown-divider">
+                                                            </li>
+                                                            <li><a class="dropdown-item" href="#">{{__('projects.actions.delete')}}</a></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div><!-- end card body -->
-                                </div><!-- end card -->
-                            </div><!-- end col -->
-                            
+                                            <div class="pt-2">
+                                                <h5 class="font-size-15 mb-1 text-truncate"><a href="projects-overview" class="text-dark">{{$project->title}}</a></h5>
+                                                <p class="text-muted mb-4 text-truncate">Duis arcu suscipit eget</p>
+                                            </div>
+
+                                            <div class="progress mt-1" style="height: 6px;">
+                                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="52">
+                                                </div>
+                                            </div>
+
+                                            <div class="pt-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="badge badge-soft-danger font-size-12"><i class="mdi mdi-clock-outline font-size-14 me-1 align-middle"></i> {{ __('projects.days_left', ['count' => 2]) }}</span>
+                                                    <div class="avatar-group align-items-center">
+                                                        <div class="avatar-group-item">
+                                                            <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliza Hardin">
+                                                                <img src="{{URL::asset('assets/images/users/avatar-4.jpg')}}" alt="" class="rounded-circle avatar-sm">
+                                                            </a>
+                                                        </div>
+                                                        <div class="avatar-group-item">
+                                                            <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Ronald Hatfield">
+                                                                <img src="{{URL::asset('assets/images/users/avatar-5.jpg')}}" alt="" class="rounded-circle avatar-sm">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                    </div><!-- end card -->
+                                </div><!-- end col -->
+                            @endforeach
                         </div><!-- end row -->
                       
 
